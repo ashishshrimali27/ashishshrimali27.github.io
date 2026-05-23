@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional 3D Experiential Site</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0c10;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --primary-glow: #00f2fe;
+            --secondary-glow: #4facfe;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            pointer-events: none; 
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .services {
+            padding: 100px 5%;
+            position: relative;
+            z-index: 10;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s;
+            transform-style: preserve-3d; 
+        }
+        .card-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,242,254,0.15) 0%, transparent 70%);
+            top: var(--mouse-y, -1000px);
+            left: var(--mouse-x, -1000px);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        .card h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            transform: translateZ(30px); 
+        }
+        .card p {
+            color: #8a99ad;
+            line-height: 1.6;
+            transform: translateZ(15px);
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+            transform: translateZ(25px);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="canvas-container">
+            <canvas id="three-canvas"></canvas>
+        </div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Next-Gen Digital Solutions</h1>
+            <p>Interactive. Professional. Immersive.</p>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2 data-aos="fade-right">Our Expertise</h2>
+        <div class="grid">
+            <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="card-glow"></div>
+                <h3>E-Commerce Pro</h3>
+                <p>High-converting stores engineered with smooth interactions to drive revenue instantly.</p>
+                <a href="#" class="btn">Explore</a>
+            </div>
+            <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="card-glow"></div>
+                <h3>Corporate SaaS</h3>
+                <p>Ultra-secure web portals and cloud interfaces crafted for corporate security and scaling.</p>
+                <a href="#" class="btn">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
